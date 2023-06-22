@@ -1,0 +1,29 @@
+<div class="main-wrapper">
+  git filter-branch --force --index-filter 'git rm -r --cached --ignore-unmatch
+  public/photos' --prune-empty --tag-name-filter cat -- --all
+
+  <!-- partial:sidebar -->
+  <app-sidebar></app-sidebar>
+  <!-- partial -->
+
+  <div class="page-wrapper">
+    <!-- partial:navbar -->
+    <app-navbar></app-navbar>
+    <!-- partial -->
+
+    <div class="page-content">
+      <!-- Spinner for lazyload modules -->
+      <div *ngIf="isLoading" class="spinner-wrapper">
+        <div class="spinner">Loading...</div>
+      </div>
+
+      <div contentAnimate *ngIf="!isLoading">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+
+    <!-- partial:footer -->
+    <app-footer></app-footer>
+    <!-- partial -->
+  </div>
+</div>
